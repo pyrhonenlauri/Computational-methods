@@ -1,11 +1,11 @@
-function [sol, time] = ode_FE(f, U_0, dt, T)
+function [sol, time] = ode_FE(f, Y_0, dt, T)
     N_t = floor(T/dt);
-    u = zeros(N_t+1, 1);
-    t = linspace(0, N_t*dt, length(u));
-    u(1) = U_0;
+    y = zeros(length(Y_0),N_t+1);
+    t = linspace(0, N_t*dt, length(y(1,:)));
+    y(:,1) = Y_0;
     for n = 1:N_t
-        u(n+1) = u(n) + dt*f(u(n), t(n));
+        y(:,n+1) = y(:,n) + dt*f(y(:,n), t(n));
     end
-    sol = u;
+    sol = y;
     time = t;
 end
