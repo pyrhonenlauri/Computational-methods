@@ -4,7 +4,7 @@ close all
 %% User input
 w=2; %omega
 num_of_periods=5;
-steps_per_period=20;
+steps_per_period=2000;
 u0=1;
 v0=2;
 
@@ -24,9 +24,20 @@ for ind=2:length(t)     %evaluation of u and v over time vector t
     v(ind)=v(ind-1)-t_step*w^2*u(ind);
 end
 
+%% Values for 20
+% A0=1.41;
+% b=0.29;
+% damp=A0*exp(-b*t);
+
+%% Values for 2000
+A0=1.41;
+b=0.0029;
+damp=A0*exp(-b*t);
+
 %% Create plots
 figure
 plot(t,u)
 hold on
 plot(t,v)
+plot(t,damp,'g--')
 legend('u','v')
