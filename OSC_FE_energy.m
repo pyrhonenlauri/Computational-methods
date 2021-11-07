@@ -1,6 +1,6 @@
 clear all
 close all
-dt=0.0001;
+dt=0.001;
 T_end=10;
 t=0:dt:T_end;
 omega=5;
